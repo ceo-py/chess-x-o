@@ -1,0 +1,84 @@
+<html>
+
+<head>
+  <title>Sea Chess</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white font-sans p-5">
+  <div class="max-w-5xl mx-auto">
+    <div class="bg-blue-900 p-5 rounded-lg mb-5 shadow-lg">
+      <div class="flex justify-between mb-5">
+        <div class="relative flex-1 mx-2">
+          <input data-content="X" type="text" id="player1" placeholder="Player 1 Name"
+            class="w-full p-2 pr-10 bg-gray-800 text-white rounded-md border-none" />
+          <span class="absolute right-2 top-1/2 transform -translate-y-1/2 font-bold text-xl text-red-700">X</span>
+        </div>
+        <div class="relative flex-1 mx-2">
+          <input data-content="O" type="text" id="player2" placeholder="Player 2 Name"
+            class="w-full p-2 pr-10 bg-gray-800 text-white rounded-md border-none" />
+          <span class="absolute right-2 top-1/2 transform -translate-y-1/2 font-bold text-xl text-blue-900">O</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <button
+        class="block mx-auto mb-5 px-8 py-2 bg-gradient-to-r from-red-700 to-blue-900 rounded-md text-white text-lg font-bold shadow-lg transform transition-transform hover:-translate-y-1 hover:shadow-xl"
+        id="resetButton">
+        Reset Game
+      </button>
+      <button
+        class="block mx-auto mb-5 px-8 py-2 bg-gradient-to-r from-red-700 to-blue-900 rounded-md text-white text-lg font-bold shadow-lg transform transition-transform hover:-translate-y-1 hover:shadow-xl"
+        id="newGame">
+        New Game
+      </button>
+    </div>
+
+
+    <div class="bg-gradient-to-r from-blue-900 to-red-700 p-5 rounded-lg mb-5 flex justify-between items-center">
+      <div class="text-center">
+        <h3 id="player1-name" class="text-lg font-semibold">Player 1</h3>
+        <div class="text-4xl font-bold text-shadow-md" id="score1">0</div>
+      </div>
+      <div id="turn-indicator" class="text-center text-2xl">Game Ready!</div>
+      <div class="text-center">
+        <h3 id="player2-name" class="text-lg font-semibold">Player 2</h3>
+        <div class="text-4xl font-bold text-shadow-md" id="score2">0</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-2 max-w-md mx-auto" id="board">
+      <div
+        class="cell aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-4xl cursor-pointer transition-transform hover:bg-gray-700 hover:scale-105"
+        data-row="0" data-col="0"></div>
+      <div
+        class="cell aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-4xl cursor-pointer transition-transform hover:bg-gray-700 hover:scale-105"
+        data-row="0" data-col="1"></div>
+      <div
+        class="cell aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-4xl cursor-pointer transition-transform hover:bg-gray-700 hover:scale-105"
+        data-row="0" data-col="2"></div>
+      <div
+        class="cell aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-4xl cursor-pointer transition-transform hover:bg-gray-700 hover:scale-105"
+        data-row="1" data-col="0"></div>
+      <div
+        class="cell aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-4xl cursor-pointer transition-transform hover:bg-gray-700 hover:scale-105"
+        data-row="1" data-col="1"></div>
+      <div
+        class="cell aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-4xl cursor-pointer transition-transform hover:bg-gray-700 hover:scale-105"
+        data-row="1" data-col="2"></div>
+      <div
+        class="cell aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-4xl cursor-pointer transition-transform hover:bg-gray-700 hover:scale-105"
+        data-row="2" data-col="0"></div>
+      <div
+        class="cell aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-4xl cursor-pointer transition-transform hover:bg-gray-700 hover:scale-105"
+        data-row="2" data-col="1"></div>
+      <div
+        class="cell aspect-square bg-gray-800 rounded-lg flex items-center justify-center text-4xl cursor-pointer transition-transform hover:bg-gray-700 hover:scale-105"
+        data-row="2" data-col=""></div>
+    </div>
+  </div>
+  <script src="chessXo.js"></script>
+</body>
+
+</html>
