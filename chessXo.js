@@ -84,6 +84,7 @@ function seeChess() {
   const players = [htmlFields.playerOne, htmlFields.playerTwo];
   htmlFields.resetBtn.addEventListener("click", () => window.location.reload());
   htmlFields.newGameBtn.addEventListener("click", () => {
+    winner = false;
     htmlFields.boardCells.flat().forEach((cell) => {
       cell.textContent = "";
     });
