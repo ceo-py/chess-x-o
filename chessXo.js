@@ -1,4 +1,5 @@
 var winner = false;
+var moves = 0;
 function selectFields() {
   return {
     playerOne: {
@@ -40,8 +41,8 @@ function checkForWin(currentCell, board) {
   const rowCheck = board[row].every(
     (cell) => cell.textContent === currentCell.textContent
   );
-  const colCheck = board[col].every(
-    (cell) => cell.textContent === currentCell.textContent
+  const colCheck = board[row].every(
+    (_, i) => board[i][col].textContent === currentCell.textContent
   );
   const leftDiagonal = board.every(
     (row, index) => row[index].textContent === currentCell.textContent
@@ -56,6 +57,7 @@ function checkForWin(currentCell, board) {
 }
 
 function isWinner(players, cell, board, turnIndicator) {
+  moves++;
   if (cell.textContent !== "") return;
   const currentPlayer = players.shift();
   cell.textContent = currentPlayer.input.getAttribute("data-content");
@@ -65,8 +67,10 @@ function isWinner(players, cell, board, turnIndicator) {
     turnIndicator.textContent = `${currentPlayer.name.textContent} wins!`;
     currentPlayer.score.textContent =
       parseInt(currentPlayer.score.textContent) + 1;
-  } else {
-    players.push(currentPlayer);
+  }
+  players.push(currentPlayer);
+  if (moves === 9 && !winner) {
+    turnIndicator.textContent = `Tie game!`;
   }
 }
 
@@ -85,9 +89,13 @@ function seeChess() {
   htmlFields.resetBtn.addEventListener("click", () => window.location.reload());
   htmlFields.newGameBtn.addEventListener("click", () => {
     winner = false;
+    moves = 0;
     htmlFields.boardCells.flat().forEach((cell) => {
       cell.textContent = "";
     });
+    players.length = 0;
+    players.push(htmlFields.playerOne, htmlFields.playerTwo);
+    htmlFields.turnIndicator.textContent = `${htmlFields.playerOne.name.textContent}'s turn`;
   });
   players.forEach((player) => writePlayerName(player));
   addCellFunctionality(htmlFields, players);
